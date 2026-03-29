@@ -1,0 +1,15 @@
+# GUI界面库
+PySide6>=6.4.0
+
+# Windows系统API库
+pywin32>=227
+
+# 图像处理库 yolo
+
+# 配置文件解析
+pyyaml>=6.0
+
+# OCR 文字识别
+onnxocr
+
+# 打包工具成为exe
