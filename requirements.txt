@@ -2,14 +2,27 @@
 PySide6>=6.4.0
 
 # Windows系统API库
-pywin32>=227
+pywin32>=306
 
 # 图像处理库 yolo
+ultralytics>=8.4.0
+opencv-python>=4.10.0
+opencv-contrib-python>=4.10.0
+
+# 标注工具
+anylabeling>=0.3.0
+imgviz<2.0.0  # imgviz 2.0.0 破坏性升级，label_colormap() 返回只读数组，与 anylabeling 不兼容
+
+# OnnxOCR 官方PyPI包（jingsongliujing/OnnxOCR同源）
+onnxocr==2025.5
+onnxruntime>=1.17.0
 
 # 配置文件解析
 pyyaml>=6.0
 
-# OCR 文字识别
-onnxocr
+# 通用工具
+numpy>=1.26.0
+pillow>=10.0.0
+tqdm>=4.66.0
 
 # 打包工具成为exe

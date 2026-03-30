@@ -1,67 +1,65 @@
-class Point:
-    def __init__(self):
-        self.x: int = 0
-        self.y: int = 0
-        
-        
+from typing import List, Optional, Dict, Union
+import numpy as np
+
 class BBox:
-    def __init__(self, x:int=0, y:int=0, to_x:int=0, to_y:int=0):
-        """Bounding box.
-        Args:
-            x (int): 左上角的x坐标
-            y (int): 左上角的y坐标
-            to_x (int, optional): 右下角的x坐标. Defaults to 0.
-            to_y (int, optional): 右下角的y坐标. Defaults to 0.
+    """Bounding Box 类，包含左上角和右下角坐标"""
+
+    def __init__(
+        self,
+        x1: float,
+        y1: float,
+        x2: float,
+        y2: float,
+        name: Optional[str] = None,
+        confidence: float = 1.0,
+    ):
         """
-        self.__x = x
-        self.__y = y
-        self.__to_x = to_x
-        self.__to_y = to_y
-        
-    def get_left_top(self) -> Point:
-        """获取左上角坐标
-        Returns:
-            Point: 左上角坐标
+        初始化 BBox 对象
+
+        参数:
+            x1: 左上角 x 坐标
+            y1: 左上角 y 坐标
+            x2: 右下角 x 坐标
+            y2: 右下角 y 坐标
+            name: 类别名称或识别文本，默认为 None
+            confidence: 置信度，默认为 1.0
         """
-        point = Point()
-        point.x = self.__x
-        point.y = self.__y
-        return point
-    
-    def get_right_bottom(self) -> Point:
-        """获取右下角坐标
-        Returns:
-            Point: 右下角坐标
-        """
-        point = Point()
-        point.x = self.__to_x
-        point.y = self.__to_y
-        return point
+        self.x1 = x1
+        self.y1 = y1
+        self.x2 = x2
+        self.y2 = y2
+        self.name = name
+        self.confidence = confidence
+
     @property
-    def width(self) -> int:
-        """获取宽度
-        Returns:
-            int: 宽度
-        """        
-        return self.__to_x - self.__x    
-    
+    def width(self) -> float:
+        """获取宽度"""
+        return self.x2 - self.x1
+
     @property
-    def height(self) -> int:
-        """获取高度 
-        Returns:
-            int: 高度
-        """        
-        return self.__to_y - self.__y
-    
+    def height(self) -> float:
+        """获取高度"""
+        return self.y2 - self.y1
+
     @property
-    def center(self) -> Point:
-        """获取中心点坐标
-        Returns:
-            Point: 中心点坐标
-        """        
-        point = Point()
-        point.x = self.__x + self.width // 2
-        point.y = self.__y + self.height // 2
-        return point
-    
-        
+    def area(self) -> float:
+        """获取面积"""
+        return self.width * self.height
+
+    @property
+    def center(self) -> tuple[float, float]:
+        """获取中心点坐标"""
+        return ((self.x1 + self.x2) / 2, (self.y1 + self.y2) / 2)
+
+    def get_roi(self, image: np.ndarray) -> np.ndarray:
+        """从图像中提取该 BBox 区域"""
+        x1, y1, x2, y2 = self.int_coords()
+        return image[y1:y2, x1:x2]
+
+    def int_coords(self) -> tuple[int, int, int, int]:
+        """获取整数坐标，用于 OpenCV 操作"""
+        return (int(self.x1), int(self.y1), int(self.x2), int(self.y2))
+
+    def __repr__(self) -> str:
+        """字符串表示"""
+        return f"BBox(x1={self.x1:.1f}, y1={self.y1:.1f}, x2={self.x2:.1f}, y2={self.y2:.1f}, name={self.name}, conf={self.confidence:.2f})"
