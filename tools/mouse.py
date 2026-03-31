@@ -2,7 +2,7 @@ import os
 import time
 import random
 from pathlib import Path
-from config import kMainDir
+from tools.config import kRootDir
 import win32api
 import win32con
 import win32gui
@@ -19,7 +19,7 @@ class MouseSimulator:
 
     def _get_lock_dir(self) -> Path:
         """返回锁文件目录（项目根目录下的 locks/ 子目录）。"""
-        lock_dir = Path(kMainDir) / "locks"
+        lock_dir = Path(kRootDir) / "locks"
         try:
             lock_dir.mkdir(parents=True, exist_ok=True)
             test_file = lock_dir / "test_write.tmp"

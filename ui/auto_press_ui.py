@@ -21,7 +21,7 @@ from PySide6.QtWidgets import (
 )
 from PySide6.QtCore import Qt
 
-from config import kMainDir
+from tools.config import kRootDir
 from src.auto_press_key import AutoPressKey
 
 
@@ -32,7 +32,7 @@ class AutoKeyPanel(QWidget):
         super().__init__(parent)
         self.setObjectName("placeholder")
         self._hwnd: int = -1
-        self._keyconfig_path: str = os.path.join(kMainDir, "assets", "keyconfig.yaml")
+        self._keyconfig_path: str = os.path.join(kRootDir, "assets", "keyconfig.yaml")
         self._auto_press = AutoPressKey()
         self._auto_press_thread: threading.Thread | None = None
         self._buildUI()
@@ -187,7 +187,7 @@ class AutoKeyPanel(QWidget):
             return
         try:
             content = open(path, encoding="utf-8").read()
-            target = os.path.join(kMainDir, "assets", "keyconfig.yaml")
+            target = os.path.join(kRootDir, "assets", "keyconfig.yaml")
             with open(target, "w", encoding="utf-8") as f:
                 f.write(content)
             self._keyconfig_path = target

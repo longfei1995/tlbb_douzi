@@ -1,0 +1,95 @@
+{
+  "version": "0.4.30",
+  "flags": {},
+  "shapes": [
+    {
+      "label": "cheap",
+      "text": "",
+      "points": [
+        [
+          914.3333333333333,
+          202.66666666666669
+        ],
+        [
+          1064.3333333333335,
+          344.33333333333337
+        ]
+      ],
+      "group_id": null,
+      "shape_type": "rectangle",
+      "flags": {}
+    },
+    {
+      "label": "cheap",
+      "text": "",
+      "points": [
+        [
+          666.0,
+          335.1666666666667
+        ],
+        [
+          832.6666666666667,
+          516.8333333333334
+        ]
+      ],
+      "group_id": null,
+      "shape_type": "rectangle",
+      "flags": {}
+    },
+    {
+      "label": "expensive",
+      "text": "",
+      "points": [
+        [
+          874.3333333333333,
+          486.0
+        ],
+        [
+          1026.0,
+          635.1666666666667
+        ]
+      ],
+      "group_id": null,
+      "shape_type": "rectangle",
+      "flags": {}
+    },
+    {
+      "label": "cheap",
+      "text": "",
+      "points": [
+        [
+          1038.5,
+          493.5
+        ],
+        [
+          1174.3333333333335,
+          641.0
+        ]
+      ],
+      "group_id": null,
+      "shape_type": "rectangle",
+      "flags": {}
+    },
+    {
+      "label": "cheap",
+      "text": "",
+      "points": [
+        [
+          1039.3333333333335,
+          253.5
+        ],
+        [
+          1181.0,
+          423.5
+        ]
+      ],
+      "group_id": null,
+      "shape_type": "rectangle",
+      "flags": {}
+    }
+  ],
+  "imagePath": "6.png",
+  "imageData": null,
+  "imageHeight": 752,
+  "imageWidth": 1282
+}

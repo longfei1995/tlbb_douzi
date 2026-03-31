@@ -8,10 +8,10 @@ if _PROJECT_ROOT not in sys.path:
 
 import yaml
 
-from config import kMainDir
+from tools.config import kRootDir
 from tools.keyboard import KeyboardSimulator
 
-_KEYCONFIG_PATH = os.path.join(kMainDir, "assets", "keyconfig.yaml")
+_KEYCONFIG_PATH = os.path.join(kRootDir, "assets", "keyconfig.yaml")
 
 
 class AutoPressKey:

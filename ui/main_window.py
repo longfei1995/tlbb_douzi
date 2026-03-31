@@ -22,7 +22,7 @@ from PySide6.QtWidgets import (
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QIcon, QCursor
 
-from config import kMainDir
+from tools.config import kRootDir
 from tools.window import WindowManager
 from ui.auto_press_ui import AutoKeyPanel
 
@@ -83,11 +83,11 @@ class GameUI(QMainWindow):
         self.setWindowTitle("豆子 — 天龙八部助手")
         self.setMinimumWidth(760)
 
-        icon_path = os.path.join(kMainDir, "assets", "icon.ico")
+        icon_path = os.path.join(kRootDir, "assets", "icon.ico")
         if os.path.exists(icon_path):
             self.setWindowIcon(QIcon(icon_path))
 
-        qss_path = os.path.join(kMainDir, "ui", "styles.qss")
+        qss_path = os.path.join(kRootDir, "ui", "styles.qss")
         if os.path.exists(qss_path):
             with open(qss_path, encoding="utf-8") as f:
                 self.setStyleSheet(f.read())
@@ -208,7 +208,7 @@ class GameUI(QMainWindow):
         return sidebar
 
     def _showAboutDialog(self):
-        readme_path = os.path.join(kMainDir, "assets", "readme.txt")
+        readme_path = os.path.join(kRootDir, "assets", "readme.txt")
         try:
             with open(readme_path, encoding="utf-8") as f:
                 content = f.read()
