@@ -4,7 +4,7 @@ from pyexpat import model
 import sys
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", ".."))
-from tools.config import kRootDir, kShouLingDir
+from tools.config import kRootDir, kShouLingYoloDir
 from ultralytics import YOLO
 
 
@@ -12,7 +12,7 @@ if __name__ == "__main__":
     # 加载训练好的模型
     model_path = os.path.join(kRootDir, "model", "shou_ling", "runs", "train", "shou_ling_yolo26n", "weights", "best.pt")
     model = YOLO(model_path)
-    yaml_path = os.path.join(kShouLingDir, "data.yaml")
+    yaml_path = os.path.join(kShouLingYoloDir, "data.yaml")
     
     # # 验证模型
     # print(f"验证数据配置路径: {yaml_path}")
@@ -26,7 +26,7 @@ if __name__ == "__main__":
     # print(f"Recall: {results.box.mr:.4f}")
     
     # 进行推理测试
-    image_path = os.path.join(kShouLingDir, "val", "images", "8.png")
+    image_path = os.path.join(kShouLingYoloDir, "val", "images", "8.png")
     results = model(image_path)
     
     # 输出推理结果
